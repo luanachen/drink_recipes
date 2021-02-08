@@ -1,0 +1,16 @@
+{
+    "drinks": [
+        "Mojito": {
+            "recipe": "do this do that",
+            "number_of_ingredients": 3
+        },
+        "Caipirinha": {
+            "recipe": "do this do that",
+            "number_of_ingredients": 3
+        },
+        "Negroni": {
+            "recipe": "do this do that",
+            "number_of_ingredients": 5
+        },
+    ]
+}

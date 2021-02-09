@@ -1,33 +1,36 @@
+import 'package:drink_recipes/drinksListBuilder.dart';
 import 'package:flutter/material.dart';
 
-class DrinkListView extends StatefulWidget {
-  final String title;
+import 'manager/drinksManager.dart';
+import 'model/drink.dart';
 
-  DrinkListView({this.title});
-
-  @override
-  _DrinkListViewState createState() => _DrinkListViewState();
-}
-
-class _DrinkListViewState extends State<DrinkListView> {
-  @override
-  void initState() {
-    super.initState();
-    fetch();
-  }
-
-  void fetch() {}
+class DrinkListView extends StatelessWidget {
+  DrinksManager manager = DrinksManager();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: Text("Drinks"),
         ),
-        body: ListView.separated(
-          itemCount: 5,
-          separatorBuilder: (context, index) => Divider(),
-          itemBuilder: (context, index) => ListTile(title: Text("drinks")),
+        body: DrinksListBuilder(
+          stream: manager.drinksListView,
+          builder: (context, drinks) {
+            return ListView.separated(
+                itemBuilder: (BuildContext context, int index) {
+                  Drink _drink = drinks[index];
+                  return ListTile(
+                    title: Text(_drink.name),
+                    subtitle: Text(
+                        "ingredientes: ${_drink.numberOfIngredients.toString()}"),
+                    leading: CircleAvatar(
+                      child: Icon(Icons.local_drink),
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) => Divider(),
+                itemCount: drinks?.length ?? 0);
+          },
         ));
   }
 }

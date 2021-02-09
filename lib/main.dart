@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'drinkListView.dart';
+import 'views/list/drinkListView.dart';
 
 void main() {
   runApp(MyApp());

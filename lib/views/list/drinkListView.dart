@@ -1,8 +1,9 @@
-import 'package:drink_recipes/drinksListBuilder.dart';
+import 'package:drink_recipes/views/list/drinksListBuilder.dart';
 import 'package:flutter/material.dart';
 
-import 'manager/drinksManager.dart';
-import 'model/drink.dart';
+import '../../manager/drinksManager.dart';
+import '../../model/drink.dart';
+import '../detail/drinkDetailView.dart';
 
 class DrinkListView extends StatelessWidget {
   DrinksManager manager = DrinksManager();
@@ -24,8 +25,15 @@ class DrinkListView extends StatelessWidget {
                     subtitle: Text(
                         "ingredientes: ${_drink.numberOfIngredients.toString()}"),
                     leading: CircleAvatar(
-                      child: Icon(Icons.local_drink),
+                      child: Icon(Icons.no_drinks_outlined),
                     ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DrinkDetailView(drink: _drink)));
+                    },
                   );
                 },
                 separatorBuilder: (context, index) => Divider(),

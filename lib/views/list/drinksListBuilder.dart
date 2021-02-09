@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'model/drink.dart';
+import '../../model/drink.dart';
 
 class DrinksListBuilder extends StatelessWidget {
   final Stream<List<Drink>> stream;

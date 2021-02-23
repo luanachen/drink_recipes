@@ -5,4 +5,6 @@ import '../model/drink.dart';
 class DrinksManager {
   Stream<List<Drink>> get drinksListView =>
       Stream.fromFuture(DrinksService.browse());
+
+  List<Drink> favoriteDrinks = [];
 }
